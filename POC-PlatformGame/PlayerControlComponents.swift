@@ -8,6 +8,17 @@
 import SpriteKit
 import GameplayKit
 
+
+
+// ------------------------------------
+
+//  A VIEW ( B, NESSE CASO ) QUE QUER PASSAR A INFORMAÇÃO DEFINE O PROTOCOLO,
+
+// A VIEW ( A ) ASSINA O PROTOCOLO
+
+// ------------------------------------
+
+
 class PlayerControlComponent: GKComponent, ControlsInputDelegate {
 
     var touchControlNode: TouchControlsInputNode?

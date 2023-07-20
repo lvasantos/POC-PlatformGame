@@ -14,7 +14,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Create the SKView instance
         myView = SKView(frame: view.bounds)
         myView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         myView.showsNodeCount = true
 
         view.addSubview(myView)
-        
+
 
 
         // Present scene

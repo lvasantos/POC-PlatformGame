@@ -1,8 +1,7 @@
 import Foundation
 import SpriteKit
 
-class PlayerNode: CharacterNode {
-
+class Player: CharacterNode {
     // Has player-specific properties like score, inventory, etc.
 
     override init(characterFolderName: CharacterSelectionOptions) {
@@ -33,4 +32,7 @@ class PlayerNode: CharacterNode {
     private func performAction() { }
     private func playSound() { }
     private func canMove() { }
+
+
 }
+

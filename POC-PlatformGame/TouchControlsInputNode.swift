@@ -7,7 +7,12 @@
 
 import SpriteKit
 
-class TouchControlsInputNode:SKSpriteNode {
+// ------------------------------------
+
+//    VIEW B
+
+// ------------------------------------
+class TouchControlsInputNode: SKSpriteNode {
 
     var alphaUnpressed: CGFloat = 0.5
     var alphaPressed: CGFloat = 0.9
@@ -24,6 +29,9 @@ class TouchControlsInputNode:SKSpriteNode {
     let buttonB = SKSpriteNode(imageNamed: "flatDark36")
     let buttonX = SKSpriteNode(imageNamed: "flatDark37")
     let buttonY = SKSpriteNode(imageNamed: "flatDark38")
+
+    let scaleDirections: CGFloat = 0.9
+    let scaleActions: CGFloat = 0.6
 
     var inputDelegate: ControlsInputDelegate?
 
@@ -47,22 +55,22 @@ class TouchControlsInputNode:SKSpriteNode {
         addButton(button: buttonDirLeft,
                   position: CGPoint(x: -(size.width / 3) - 50, y: -(size.height / 4)),
                   name: "left",
-                  scale: 2.0)
+                  scale: scaleDirections)
 
         addButton(button: buttonDirRight,
                   position: CGPoint(x: -(size.width / 3) + 50, y: -(size.height / 4)),
                   name: "right",
-                  scale: 2.0)
+                  scale: scaleDirections)
 
         addButton(button: buttonDirUp,
                   position: CGPoint(x: -(size.width / 3), y: -(size.height / 4) + 50),
                   name: "up",
-                  scale: 2.0)
+                  scale: scaleDirections)
 
         addButton(button: buttonDirDown,
                   position: CGPoint(x: -(size.width / 3), y: -(size.height / 4) - 50),
                   name: "down",
-                  scale: 2.0)
+                  scale: scaleDirections)
 
         /** ------------------------------------------
                         RIGHT SIDE BUTTONS
@@ -72,22 +80,22 @@ class TouchControlsInputNode:SKSpriteNode {
         addButton(button: buttonX,
                   position: CGPoint(x: (size.width / 3), y: -(size.height / 4) + 50),
                   name: "X",
-                  scale: 0.40)
+                  scale: scaleActions)
 
         addButton(button: buttonY,
                   position: CGPoint(x: (size.width / 3) - 50, y: -(size.height / 4)),
                   name: "Y",
-                  scale: 0.40)
+                  scale: scaleActions)
 
         addButton(button: buttonB,
                   position: CGPoint(x: (size.width / 3), y: -(size.height / 4) - 50),
                   name: "B",
-                  scale: 0.40)
+                  scale: scaleActions)
 
         addButton(button: buttonA,
-                  position: CGPoint(x: (size.width / 3), y: -(size.height / 4)),
+                  position: CGPoint(x: (size.width / 3) + 50, y: -(size.height / 4)),
                   name: "A",
-                  scale: 0.40)
+                  scale: scaleActions)
 
 
     }
@@ -151,11 +159,11 @@ class TouchControlsInputNode:SKSpriteNode {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //
+        touchUp(touches, with: event)
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //
+        touchUp(touches, with: event)
     }
 
     func touchUp(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -182,6 +190,18 @@ class TouchControlsInputNode:SKSpriteNode {
         }
     }
 
+}
+
+
+
+// ------------------------------------
+
+//  MARK: DEFINIÇÃO DE PROTOCOLO
+
+// ------------------------------------
+
+protocol ControlsInputDelegate: AnyObject {
+    func follow(command: String?)
 }
 
 

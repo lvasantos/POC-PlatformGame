@@ -2,21 +2,26 @@ import SpriteKit
 import GameplayKit
 
 class NewGameScene: SKScene, SKPhysicsContactDelegate {
-    var player: PlayerNode = PlayerNode(characterFolderName: .hoodie)
+    //    var player: PlayerNode = PlayerNode(characterFolderName: .hoodie)
     var tapLocation: CGPoint = .init()
     let groundRect: SKSpriteNode = SKSpriteNode(color: .green, size: .zero)
-    private var cameraNode: SKCameraNode? = SKCameraNode()
+
 
     // -----------------
-    lazy var controls = TouchControlsInputNode(frame: frame)
     let leftButton = SKSpriteNode(color: .gray, size: CGSize(width: 50, height: 50))
     let rightButton = SKSpriteNode(color: .gray, size: CGSize(width: 50, height: 50))
-    var entities =  [GKEntity]()
+
+
+    private var cam = SKCameraNode()
+    var playerNode: SKSpriteNode!
+    var touchControlsInputNode: TouchControlsInputNode!
+    var containerNode = SKNode()
+    let lockedContainer = SKNode()
+
     // -----------------
 
     override init(size: CGSize) {
         super.init(size: size)
-
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -24,31 +29,55 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func update(_ currentTime: TimeInterval) {
-        // Game logic update code
+        cam.position = playerNode.position
     }
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         physicsWorld.contactDelegate = self
-        setupPlayer()
+
+        // ------------------------------------
+
+
+        setupGround()
+        // Add the container node to the scene
+//        containerNode.position = CGPoint(x: frame.midX, y: frame.midY)
+        cam.zPosition = 10
+        cam.position = CGPoint(x: size.width/2, y: size.height/2)
+        cam.isUserInteractionEnabled = false
+        camera = cam
+
+        // Create the player node and add it to the container node
+        playerNode = SKSpriteNode(color: .red, size: CGSize(width: 50, height: 50))
+        playerNode.position = CGPoint(x: frame.midX, y: frame.midY)
+        playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
+        addChild(playerNode)
+
+        // Create the HUD node and add it directly to the scene
+        let hudNode = TouchControlsInputNode(frame: CGRect(x: frame.width/2, y: frame.height/2, width: size.width, height: size.height))
+        hudNode.inputDelegate = self
+
+        addChild(cam)
+
+
+
+        cam.addChild(hudNode)
+
+        // ------------------------------------
 
     }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-//        Receive the first location that the user touched and updates the BuildCharacter
+        //        Receive the first location that the user touched and updates the BuildCharacter
         if let location = touches.first?.location(in: self) {
             tapLocation = location
-        }
-    }
 
-    private func setupPlayer() {
-//        player.physicsBody = SKPhysicsBody(rectangleOf: player.frame.size)
-//        player.physicsBody?.categoryBitMask = 2
-//        player.physicsBody?.collisionBitMask = 1
-//        player.physicsBody?.contactTestBitMask = 2
-        player.position = CGPoint(x: groundRect.frame.midX, y: groundRect.frame.maxY + player.frame.height)
-        addChild(player)
+        }
+
+        if playerNode.contains(tapLocation) {
+            print("red")
+        }
+
     }
 
     private func setupGround() {
@@ -61,21 +90,25 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
         groundRect.physicsBody?.contactTestBitMask = 1
         addChild(groundRect)
     }
+}
 
-    private func movePlayerRight() {
-        movePlayer(by: player.size.width)
-    }
-    private func movePlayerLeft() {
-        movePlayer(by: -player.size.width)
-    }
-
-    private func movePlayer(by distance: CGFloat) {
-
-        let newPosition = CGPoint(x: player.position.x + distance, y: player.position.y)
-
-        let moveAction = SKAction.move(to: newPosition, duration: 0.2)
-
-        player.run(moveAction)
-
+extension NewGameScene: ControlsInputDelegate {
+    func follow(command: String?) {
+        // Implement your logic here based on the command received from the touch controls
+        // For example, you can move the player node based on the command
+        switch command {
+        case "left":
+            playerNode.position.x -= 10
+            print("left")
+        case "right":
+            playerNode.position.x += 10
+            // Add other cases for different commands
+        case "up":
+            playerNode.position.y += 10
+        case "down":
+            playerNode.position.y -= 10
+        default:
+            break
+        }
     }
 }

@@ -8,7 +8,7 @@
 import SpriteKit
 
 class ExploreScene: SKScene {
-    var player: PlayerNode = PlayerNode(characterFolderName: .hoodie)
+    var player: Player = Player(characterFolderName: .hoodie)
     private var cameraNode: SKCameraNode? = SKCameraNode()
 
     override func didMove(to view: SKView) {
