@@ -20,6 +20,7 @@
 		7E8EE3FF2A685E7100AF0437 /* PlayerControlComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EE3FE2A685E7100AF0437 /* PlayerControlComponents.swift */; };
 		7E8EE4032A68681800AF0437 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EE4022A68681800AF0437 /* MyScene.sks */; };
 		7E8EE43A2A68CF3B00AF0437 /* CharacterStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EE4392A68CF3B00AF0437 /* CharacterStateEnum.swift */; };
+		7E8EE43C2A69994100AF0437 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EE43B2A69994100AF0437 /* EntityManager.swift */; };
 		7EA0DD432A608212000BE613 /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0DD422A608212000BE613 /* CharacterNode.swift */; };
 		7EA0DD452A608758000BE613 /* TouchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0DD442A608758000BE613 /* TouchState.swift */; };
 		7EA0DD472A608826000BE613 /* InteractionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0DD462A608826000BE613 /* InteractionType.swift */; };
@@ -44,6 +45,7 @@
 		7E8EE3FE2A685E7100AF0437 /* PlayerControlComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlComponents.swift; sourceTree = "<group>"; };
 		7E8EE4022A68681800AF0437 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		7E8EE4392A68CF3B00AF0437 /* CharacterStateEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStateEnum.swift; sourceTree = "<group>"; };
+		7E8EE43B2A69994100AF0437 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		7EA0DD422A608212000BE613 /* CharacterNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterNode.swift; sourceTree = "<group>"; };
 		7EA0DD442A608758000BE613 /* TouchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchState.swift; sourceTree = "<group>"; };
 		7EA0DD462A608826000BE613 /* InteractionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionType.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				7E8EE4022A68681800AF0437 /* MyScene.sks */,
 				7E8EE3FA2A68512300AF0437 /* TouchControlsInputNode.swift */,
 				7E8EE3FE2A685E7100AF0437 /* PlayerControlComponents.swift */,
+				7E8EE43B2A69994100AF0437 /* EntityManager.swift */,
 				7E8EE4042A6894D100AF0437 /* Protocols */,
 				7EA0DD482A6098A0000BE613 /* Enums */,
 				7E8EE3F42A65D16500AF0437 /* GameScenes */,
@@ -252,6 +255,7 @@
 			files = (
 				7EA0DD472A608826000BE613 /* InteractionType.swift in Sources */,
 				7E471EF72A5F499100730242 /* MyGameViewController.swift in Sources */,
+				7E8EE43C2A69994100AF0437 /* EntityManager.swift in Sources */,
 				7E8EE3EF2A6560E800AF0437 /* Player.swift in Sources */,
 				7E8EE3FF2A685E7100AF0437 /* PlayerControlComponents.swift in Sources */,
 				7E8EE43A2A68CF3B00AF0437 /* CharacterStateEnum.swift in Sources */,

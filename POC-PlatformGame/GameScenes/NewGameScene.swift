@@ -2,21 +2,21 @@ import SpriteKit
 import GameplayKit
 
 class NewGameScene: SKScene, SKPhysicsContactDelegate {
-    //    var player: PlayerNode = PlayerNode(characterFolderName: .hoodie)
+
+    
+
+
+
     var tapLocation: CGPoint = .init()
     let groundRect: SKSpriteNode = SKSpriteNode(color: .green, size: .zero)
 
 
     // -----------------
-    let leftButton = SKSpriteNode(color: .gray, size: CGSize(width: 50, height: 50))
-    let rightButton = SKSpriteNode(color: .gray, size: CGSize(width: 50, height: 50))
-
 
     private var cam = SKCameraNode()
     var playerNode: SKSpriteNode!
     var touchControlsInputNode: TouchControlsInputNode!
-    var containerNode = SKNode()
-    let lockedContainer = SKNode()
+    var entities = [GKEntity]()
 
     // -----------------
 
@@ -41,7 +41,6 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
 
         setupGround()
         // Add the container node to the scene
-//        containerNode.position = CGPoint(x: frame.midX, y: frame.midY)
         cam.zPosition = 10
         cam.position = CGPoint(x: size.width/2, y: size.height/2)
         cam.isUserInteractionEnabled = false
@@ -64,6 +63,7 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
         cam.addChild(hudNode)
 
         // ------------------------------------
+
 
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
