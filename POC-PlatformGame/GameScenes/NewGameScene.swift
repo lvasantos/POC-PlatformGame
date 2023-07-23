@@ -2,11 +2,6 @@ import SpriteKit
 import GameplayKit
 
 class NewGameScene: SKScene, SKPhysicsContactDelegate {
-
-    
-
-
-
     var tapLocation: CGPoint = .init()
     let groundRect: SKSpriteNode = SKSpriteNode(color: .green, size: .zero)
 
@@ -16,7 +11,6 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
     private var cam = SKCameraNode()
     var playerNode: SKSpriteNode!
     var touchControlsInputNode: TouchControlsInputNode!
-    var entities = [GKEntity]()
 
     // -----------------
 
@@ -34,7 +28,7 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        physicsWorld.contactDelegate = self
+//        physicsWorld.contactDelegate = self
 
         // ------------------------------------
 
@@ -49,7 +43,7 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
         // Create the player node and add it to the container node
         playerNode = SKSpriteNode(color: .red, size: CGSize(width: 50, height: 50))
         playerNode.position = CGPoint(x: frame.midX, y: frame.midY)
-        playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
+//        playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
         addChild(playerNode)
 
         // Create the HUD node and add it directly to the scene
@@ -57,9 +51,6 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
         hudNode.inputDelegate = self
 
         addChild(cam)
-
-
-
         cam.addChild(hudNode)
 
         // ------------------------------------
@@ -68,15 +59,6 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        //        Receive the first location that the user touched and updates the BuildCharacter
-        if let location = touches.first?.location(in: self) {
-            tapLocation = location
-
-        }
-
-        if playerNode.contains(tapLocation) {
-            print("red")
-        }
 
     }
 

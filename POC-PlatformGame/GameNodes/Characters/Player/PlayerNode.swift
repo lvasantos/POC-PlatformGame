@@ -1,17 +1,16 @@
 import Foundation
 import SpriteKit
 
-class Player: CharacterNode {
+class PlayerNode: SKSpriteNode {
     // Has player-specific properties like score, inventory, etc.
-
-    override init(characterFolderName: CharacterSelectionOptions) {
-        super.init(characterFolderName: characterFolderName)
+    init() {
+        super.init(texture: SKTexture(), color: .green, size: CGSize(width: 50, height: 50))
     }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    /*
     // MARK: new functions
     private func build() { }
     private func move() { }
@@ -33,6 +32,6 @@ class Player: CharacterNode {
     private func playSound() { }
     private func canMove() { }
 
-
+    */
 }
 

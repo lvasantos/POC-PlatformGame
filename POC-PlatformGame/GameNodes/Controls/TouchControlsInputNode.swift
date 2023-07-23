@@ -8,9 +8,7 @@
 import SpriteKit
 
 // ------------------------------------
-
 //    VIEW B
-
 // ------------------------------------
 class TouchControlsInputNode: SKSpriteNode {
 
@@ -23,7 +21,6 @@ class TouchControlsInputNode: SKSpriteNode {
     let buttonDirRight = SKSpriteNode(imageNamed: "flatDark24")
     let buttonDirUp = SKSpriteNode(imageNamed: "flatDark25")
     let buttonDirDown = SKSpriteNode(imageNamed: "flatDark26")
-
 
     let buttonA = SKSpriteNode(imageNamed: "flatDark35")
     let buttonB = SKSpriteNode(imageNamed: "flatDark36")
@@ -47,11 +44,9 @@ class TouchControlsInputNode: SKSpriteNode {
     }
 
     func setupControls(size: CGSize) {
-        /** ------------------------------------------
+        /*------------------------------------------
                         LEFT  SIDE BUTTONS
-            ------------------------------------------
-        */
-
+        --------------------------------------------*/
         addButton(button: buttonDirLeft,
                   position: CGPoint(x: -(size.width / 3) - 50, y: -(size.height / 4)),
                   name: "left",
@@ -72,11 +67,9 @@ class TouchControlsInputNode: SKSpriteNode {
                   name: "down",
                   scale: scaleDirections)
 
-        /** ------------------------------------------
+        /*------------------------------------------
                         RIGHT SIDE BUTTONS
-            ------------------------------------------
-        */
-
+         -------------------------------------------*/
         addButton(button: buttonX,
                   position: CGPoint(x: (size.width / 3), y: -(size.height / 4) + 50),
                   name: "X",
@@ -96,8 +89,6 @@ class TouchControlsInputNode: SKSpriteNode {
                   position: CGPoint(x: (size.width / 3) + 50, y: -(size.height / 4)),
                   name: "A",
                   scale: scaleActions)
-
-
     }
 
     func addButton(button: SKSpriteNode, position: CGPoint, name: String, scale: CGFloat) {
@@ -191,19 +182,5 @@ class TouchControlsInputNode: SKSpriteNode {
     }
 
 }
-
-
-
-// ------------------------------------
-
-//  MARK: DEFINIÇÃO DE PROTOCOLO
-
-// ------------------------------------
-
-protocol ControlsInputDelegate: AnyObject {
-    func follow(command: String?)
-}
-
-
 
 

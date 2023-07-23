@@ -14,6 +14,10 @@ class EntityManager {
         entities.append(entity)
     }
 
+    func removeEntity(_ entity: GKEntity) {
+        entities.removeAll { $0 == entity }
+    }
+
     func update(deltaTime: TimeInterval) {
         for entity in entities {
             entity.update(deltaTime: deltaTime)
