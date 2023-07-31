@@ -137,8 +137,15 @@ class CharacterNode: SKSpriteNode {
             let idleAction = SKAction.animate(with: idleFrames, timePerFrame: 0.4)
             let repeatAction = SKAction.repeatForever(idleAction)
             self.run(repeatAction)
-//            run(repeatAction, withKey: "IdleAnimation")
+
+/*
+
+            outra forma de utilizar, aparentemente  usar withKey é mais recomendado.
+            run(repeatAction, withKey: "IdleAnimation")
+
+ */
         }
+
     private func moveSpriteNode(_ tapPosition: CGPoint) {
         self.xScale = facingPosition == .left ? -1 : 1
         let moveAction = SKAction.moveTo(x: tapPosition.x, duration: 1)
@@ -196,56 +203,4 @@ class CharacterNode: SKSpriteNode {
     private func isGrounded() { }
     private func isInDanger() { }
     private func handleCollision() { }
-}
-
-extension CharacterNode: UIKeyInput {
-    override var canBecomeFirstResponder: Bool {
-        return true
-    }
-    
-    var hasText: Bool {
-        return false
-    }
-    func insertText(_ text: String) {
-        //
-    }
-    func deleteBackward() {
-        //
-    }
-    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        for press in presses {
-            handleKeyPress(press)
-        }
-    }
-    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        for press in presses {
-            handleKeyRelease(press)
-
-        }
-    }
-    private func handleKeyPress(_ press: UIPress) {
-        guard let key = press.key else { return }
-
-        switch key.keyCode {
-            case .keyboardLeftArrow:
-                // Move character left
-                moveCharacterLeft()
-            case .keyboardRightArrow:
-                // Move character right
-                moveCharacterRight()
-            // Handle other key codes if needed
-            default:
-                break
-        }
-    }
-    private func handleKeyRelease(_ press: UIPress) {
-        // Handle key release if needed
-
-    }
-    private func moveCharacterLeft() {
-        // Move character left logic
-    }
-    private func moveCharacterRight() {
-        // Move character right logic
-    }
 }

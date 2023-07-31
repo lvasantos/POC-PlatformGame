@@ -4,7 +4,10 @@ import SpriteKit
 class PlayerNode: SKSpriteNode {
     // Has player-specific properties like score, inventory, etc.
     init() {
-        super.init(texture: SKTexture(), color: .green, size: CGSize(width: 50, height: 50))
+        let texture = SKTextureAtlas(named:  "mysteriousboy")
+        let sktext = SKTexture(imageNamed: texture.textureNames[0])
+        super.init(texture: sktext, color: .clear, size: CGSize(width: 50, height: 50))
+
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -31,7 +34,6 @@ class PlayerNode: SKSpriteNode {
     private func performAction() { }
     private func playSound() { }
     private func canMove() { }
-
     */
 }
 

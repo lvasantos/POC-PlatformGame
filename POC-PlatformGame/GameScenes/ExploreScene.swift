@@ -6,6 +6,7 @@
 //
 
 import SpriteKit
+import GameplayKit
 
 class ExploreScene: SKScene, SKPhysicsContactDelegate {
     private var cam: SKCameraNode = SKCameraNode()
@@ -24,7 +25,8 @@ class ExploreScene: SKScene, SKPhysicsContactDelegate {
 
         // The entity has all logic settings, now add playerNode
         playerEntity = PlayerEntity(playerNode: playerNode, scene: self)
-
+        let skNodeComponent = GKSKNodeComponent(node: playerNode)
+        playerEntity!.addComponent(skNodeComponent)
         // Add the entities to entityManager
         if let playerEntity = playerEntity {
             entityManager.addEntity(playerEntity)
@@ -33,6 +35,7 @@ class ExploreScene: SKScene, SKPhysicsContactDelegate {
         if let pcc = playerEntity?.component(ofType: ControlComponent.self) {
             pcc.setupControls(camera: cam)
         }
+
 
     }
 
@@ -82,6 +85,10 @@ class ExploreScene: SKScene, SKPhysicsContactDelegate {
 
     override func didFinishUpdate() {
         centerOnNode(node: playerNode)
+    }
+
+    override func update(_ currentTime: TimeInterval) {
+        entityManager.update(deltaTime: currentTime)
     }
 
 }

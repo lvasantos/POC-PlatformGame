@@ -108,7 +108,7 @@ class TouchControlsInputNode: SKSpriteNode {
                 if button.contains(location) && pressedButtons.firstIndex(of: button) == nil {
                     pressedButtons.append(button)
                     if (inputDelegate != nil) {
-                        inputDelegate?.follow(command: button.name)
+                        inputDelegate?.follow(command: button.name!)
                     }
                 }
                 if (pressedButtons.firstIndex(of: button) == nil) {
@@ -131,7 +131,7 @@ class TouchControlsInputNode: SKSpriteNode {
                     if index != nil {
                         pressedButtons.remove(at: index!)
                         if (inputDelegate != nil) {
-                            inputDelegate?.follow(command: "cancel \(String(describing: button.name))")
+                            inputDelegate?.follow(command: "cancel \(String(describing: button.name!))")
                         }
                     }
                 } else if !button.contains(previousLocation)  && button.contains(location) && pressedButtons.firstIndex(of: button) == nil {
@@ -168,7 +168,7 @@ class TouchControlsInputNode: SKSpriteNode {
                     if index != nil {
                         pressedButtons.remove(at: index!)
                         if inputDelegate != nil {
-                            inputDelegate?.follow(command: "stop \(String(describing: button.name))")
+                            inputDelegate?.follow(command: "stop \(String(describing: button.name!))")
                         }
                     }
                 }
