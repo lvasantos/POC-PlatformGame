@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         myView.ignoresSiblingOrder = true
         myView.showsFPS = true
         myView.showsNodeCount = true
+        myView.isMultipleTouchEnabled = true
 
         view.addSubview(myView)
 
