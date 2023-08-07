@@ -1,53 +1,23 @@
-enum TapDirection: CustomStringConvertible {
+enum TapDirection: String {
     case left
     case right
     case front
     case back
 
     var description: String {
-        switch self {
-        case .left:
-            return "left"
-        case .right:
-            return "right"
-        case .front:
-            return "front"
-        case .back:
-            return "back"
-        }
+        return self.rawValue
     }
 }
 
-enum CharacterAction: CustomStringConvertible, CaseIterable {
+enum CharacterAction: String, CaseIterable {
     case idle
     case attack
     case run
-    case walk
-    case dead
-    case jump
-    case fall
     case launch
+    case walk
 
     var description: String {
-        switch self {
-        case .idle:
-            return "idle"
-        case .attack:
-            return "attack"
-        case .run:
-            return "run"
-        case .dead:
-            return "dead"
-        case .jump:
-            return "jump"
-        case .fall:
-            return "fall"
-        case .launch:
-            return "launch"
-        case .walk:
-            return "walk"
-        }
+        return self.rawValue
     }
+
 }
-
-

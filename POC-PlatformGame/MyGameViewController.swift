@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         myView.ignoresSiblingOrder = true
         myView.showsFPS = true
         myView.showsNodeCount = true
+        myView.isMultipleTouchEnabled = true
 
         view.addSubview(myView)
 
@@ -29,7 +30,6 @@ class ViewController: UIViewController {
         // Present scene
 //        let scene = NewGameScene(size: view.bounds.size)
         let scene = ExploreScene(size: view.bounds.size)
-//        let scene = SKScene(size: view.bounds.size)
         scene.scaleMode = .aspectFill
         myView.presentScene(scene)
     }

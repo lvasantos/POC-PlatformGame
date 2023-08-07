@@ -28,20 +28,17 @@ class NewGameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-//        physicsWorld.contactDelegate = self
-
-        // ------------------------------------
-
 
         setupGround()
         // Add the container node to the scene
-        cam.zPosition = 10
+        // cam.zPosition = 10
         cam.position = CGPoint(x: size.width/2, y: size.height/2)
         cam.isUserInteractionEnabled = false
         camera = cam
 
         // Create the player node and add it to the container node
-        playerNode = SKSpriteNode(color: .red, size: CGSize(width: 50, height: 50))
+//        playerNode = SKSpriteNode(color: .red, size: CGSize(width: 50, height: 50))
+        playerNode = CharacterNode(characterFolderName: .hoodie)
         playerNode.position = CGPoint(x: frame.midX, y: frame.midY)
 //        playerNode.physicsBody = SKPhysicsBody(rectangleOf: playerNode.size)
         addChild(playerNode)

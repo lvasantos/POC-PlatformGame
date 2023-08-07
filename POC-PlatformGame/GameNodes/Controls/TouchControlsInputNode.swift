@@ -48,12 +48,12 @@ class TouchControlsInputNode: SKSpriteNode {
                         LEFT  SIDE BUTTONS
         --------------------------------------------*/
         addButton(button: buttonDirLeft,
-                  position: CGPoint(x: -(size.width / 3) - 50, y: -(size.height / 4)),
+                  position: CGPoint(x: -(size.width / 3) - 60, y: -(size.height / 4)),
                   name: "left",
                   scale: scaleDirections)
 
         addButton(button: buttonDirRight,
-                  position: CGPoint(x: -(size.width / 3) + 50, y: -(size.height / 4)),
+                  position: CGPoint(x: -(size.width / 3) + 60, y: -(size.height / 4)),
                   name: "right",
                   scale: scaleDirections)
 

@@ -77,7 +77,7 @@ class CharacterNode: SKSpriteNode {
         run(sequenceAction)
     }
 
-    @available(*, unavailable, message: "This should not be used. The function is for characters that walk in 4 directions. left,right, top and down")
+    @available(*, unavailable, message: "This should not be used. The function is for characters that walk in 4 directions. left, right, top and down")
     private func characterFacingDirection(_ tapPosition: CGPoint) {
         // Updates the direction the character is facing according to user tap location
         if abs(tapPosition.x - self.position.x) > abs(tapPosition.y - self.position.y) {
@@ -105,7 +105,7 @@ class CharacterNode: SKSpriteNode {
     private func buildCharacter() {
         /// Should run on init so you can check all textures availability.
 
-        // build and order the correct images for specific action (walking, idle etc). Goes through all frames from the atlas and builds accondingly.
+        // build and order the correct images for specific action (walking, idle etc). Goes through all frames from the atlas and builds accordingly.
         do {
 
             try checkAtlasFolderName()
@@ -113,15 +113,7 @@ class CharacterNode: SKSpriteNode {
             loadFrames()
 
         } catch let error as AssetError {
-//            Using as AssetError so I could switch and it would automatically autofill for me. Love me a lazy way out. 💜
-            switch error {
-            case .incorrectAssetInAtlas(let string):
-                print(AssetError.incorrectAssetInAtlas(string).description)
-            case .missingTextureInfo(let string):
-                print(AssetError.missingTextureInfo(string).description)
-            case .framesNotLoaded(let string):
-                print(AssetError.framesNotLoaded(string).description)
-            }
+            print(error.description)
         } catch {
             print("An unexpected error occurred: \(error.localizedDescription)")
         }
@@ -139,7 +131,6 @@ class CharacterNode: SKSpriteNode {
             self.run(repeatAction)
 
 /*
-
             outra forma de utilizar, aparentemente  usar withKey é mais recomendado.
             run(repeatAction, withKey: "IdleAnimation")
 
