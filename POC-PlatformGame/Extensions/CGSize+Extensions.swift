@@ -16,8 +16,6 @@ extension CGSize {
     static let onefourteenthWidth: CGFloat = 1/14
     static let oneSeventhHeight: CGFloat = 1/7
 }
-
-
 // ------------------------------------------------------
 
 // MARK: Desired screen size settings

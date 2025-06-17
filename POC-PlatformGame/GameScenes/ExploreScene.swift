@@ -18,6 +18,7 @@ class ExploreScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5)
+        self.physicsWorld.contactDelegate = self
         // Load Sprites in type Player,and add the sprites
         setupGround()
         setupPlayer()
@@ -54,23 +55,32 @@ class ExploreScene: SKScene, SKPhysicsContactDelegate {
         playerNode.physicsBody = SKPhysicsBody(rectangleOf: self.playerNode.size)
         playerNode.physicsBody?.categoryBitMask = ColliderType.player.identifier
         playerNode.position = CGPoint(x: frame.midX, y: frame.midY)
+        
         addChild(playerNode)
     }
 
     func setupGround() {
-        let behind = SKSpriteNode(color: .gray, size: CGSize(width: frame.width/2, height: frame.height))
-        behind.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(behind)
-
         ground = SKSpriteNode(color: .brown, size: CGSize(width: frame.width, height: frame.height/2))
         ground.position = CGPoint(x: frame.midX, y: frame.minY)
         ground.physicsBody = SKPhysicsBody(rectangleOf: self.ground.size)
         ground.physicsBody?.isDynamic = false
         ground.physicsBody?.categoryBitMask = ColliderType.ground.identifier
         ground.physicsBody?.collisionBitMask = ColliderType.player.identifier
+        ground.physicsBody?.contactTestBitMask = ColliderType.player.identifier
         addChild(ground)
 
+
+        let platformSmall = SKSpriteNode(color: .systemBrown, size: CGSize(width: frame.width/5, height: 12))
+        platformSmall.position = CGPoint(x: ground.position.x + 160 + ground.frame.width/2, y:ground.frame.height/2 + 20)
+        platformSmall.physicsBody = SKPhysicsBody(rectangleOf: platformSmall.size)
+        platformSmall.physicsBody?.isDynamic = false
+        platformSmall.physicsBody?.categoryBitMask = ColliderType.platform.identifier
+        platformSmall.physicsBody?.collisionBitMask = ColliderType.player.identifier
+        platformSmall.physicsBody?.contactTestBitMask = ColliderType.player.identifier
+        addChild(platformSmall)
+
     }
+
 
 /*
     --------------------------------------------
@@ -90,8 +100,20 @@ class ExploreScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         entityManager.update(deltaTime: currentTime)
     }
+    /*
+        --------------------------------------------
 
+                    MARK: Physics
+
+        --------------------------------------------
+     */
+
+    func didBegin(_ contact: SKPhysicsContact) {
+
+        if contact.bodyA.categoryBitMask == ColliderType.player.identifier || contact.bodyB.categoryBitMask == ColliderType.player.identifier  {
+            if let moveComponent = playerNode.entity?.component(ofType: ActionComponent.self){
+                moveComponent.onGround = true
+            }
+        }
+    }
 }
-
-
-

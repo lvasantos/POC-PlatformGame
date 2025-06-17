@@ -11,7 +11,7 @@
 		7E471EF72A5F499100730242 /* MyGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E471EF62A5F499100730242 /* MyGameViewController.swift */; };
 		7E471EFC2A5F499200730242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E471EFB2A5F499200730242 /* Assets.xcassets */; };
 		7E471EFF2A5F499200730242 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E471EFD2A5F499200730242 /* LaunchScreen.storyboard */; };
-		7E471F062A5F4B2B00730242 /* NewGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E471F052A5F4B2B00730242 /* NewGameScene.swift */; };
+		7E5211402AA8F5060080F92C /* HitboxComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E52113F2AA8F5060080F92C /* HitboxComponent.swift */; };
 		7E83F6662A6E2D93005CD40E /* IdleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83F6652A6E2D93005CD40E /* IdleState.swift */; };
 		7E83F6682A7208B3005CD40E /* NormalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83F6672A7208B3005CD40E /* NormalState.swift */; };
 		7E8EE3EF2A6560E800AF0437 /* PlayerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EE3EE2A6560E800AF0437 /* PlayerNode.swift */; };
@@ -49,7 +49,7 @@
 		7E471EF62A5F499100730242 /* MyGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGameViewController.swift; sourceTree = "<group>"; };
 		7E471EFB2A5F499200730242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E471EFE2A5F499200730242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7E471F052A5F4B2B00730242 /* NewGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameScene.swift; sourceTree = "<group>"; };
+		7E52113F2AA8F5060080F92C /* HitboxComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitboxComponent.swift; sourceTree = "<group>"; };
 		7E83F6652A6E2D93005CD40E /* IdleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleState.swift; sourceTree = "<group>"; };
 		7E83F6672A7208B3005CD40E /* NormalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalState.swift; sourceTree = "<group>"; };
 		7E8EE3EE2A6560E800AF0437 /* PlayerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNode.swift; sourceTree = "<group>"; };
@@ -177,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				7E8EE3F62A65E3D700AF0437 /* Gameplay.swift */,
-				7E471F052A5F4B2B00730242 /* NewGameScene.swift */,
 				7E8EE3F82A670C5300AF0437 /* ExploreScene.swift */,
 				7E8EE4442A6C7DAB00AF0437 /* LevelCompleteScene.swift */,
 			);
@@ -214,6 +213,7 @@
 				7E8EE4052A689A1200AF0437 /* Controls */,
 				7E8EE4402A6C7D6400AF0437 /* PlayerComponent.swift */,
 				7E8EE45A2A6DF1CD00AF0437 /* ActionComponent.swift */,
+				7E52113F2AA8F5060080F92C /* HitboxComponent.swift */,
 				7E8EE4422A6C7D7900AF0437 /* EnemyComponent.swift */,
 			);
 			path = GameComponents;
@@ -363,10 +363,10 @@
 				7E8EE4472A6C7DBB00AF0437 /* CharacterEntity.swift in Sources */,
 				7E8EE44F2A6C7DF900AF0437 /* AudioManager.swift in Sources */,
 				7E8EE45B2A6DF1CD00AF0437 /* ActionComponent.swift in Sources */,
+				7E5211402AA8F5060080F92C /* HitboxComponent.swift in Sources */,
 				7E8EE4592A6DD8B200AF0437 /* ColliderTypeEnum.swift in Sources */,
 				7EA0DD432A608212000BE613 /* CharacterNode.swift in Sources */,
 				7E8EE4492A6C7DC500AF0437 /* NPCEntity.swift in Sources */,
-				7E471F062A5F4B2B00730242 /* NewGameScene.swift in Sources */,
 				7EA0DD452A608758000BE613 /* TouchState.swift in Sources */,
 				7E83F6662A6E2D93005CD40E /* IdleState.swift in Sources */,
 				7E8EE44D2A6C7DF100AF0437 /* SceneManager.swift in Sources */,
@@ -514,6 +514,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -541,6 +542,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (

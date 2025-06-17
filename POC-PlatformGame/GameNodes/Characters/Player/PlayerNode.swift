@@ -3,10 +3,12 @@ import SpriteKit
 
 class PlayerNode: SKSpriteNode {
     // Has player-specific properties like score, inventory, etc.
+    var pressingDown = false
     init() {
-        let texture = SKTextureAtlas(named:  "mysteriousboy")
-        let sktext = SKTexture(imageNamed: texture.textureNames[0])
-        super.init(texture: sktext, color: .clear, size: CGSize(width: 50, height: 50))
+//        let texture = SKTextureAtlas(named:  "mysteriousboy")
+//        let sktext = SKTexture(imageNamed: texture.textureNames[0])
+//        super.init(texture: sktext, color: .clear, size: CGSize(width: 50, height: 50))
+        super.init(texture: SKTexture(), color: .red, size: CGSize(width: 40.0, height: 40.0))
 
     }
     required init?(coder aDecoder: NSCoder) {

@@ -6,9 +6,10 @@
 //
 
 
-enum ColliderType {
+enum ColliderType: UInt32 {
     case player
     case ground
+    case platform
 
     var identifier: UInt32 {
         switch self {
@@ -16,6 +17,8 @@ enum ColliderType {
             return 1
         case .ground:
             return 2
+        case .platform:
+            return 3
         }
     }
 }

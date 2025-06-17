@@ -22,27 +22,38 @@ class ActionComponent: GKComponent {
     var onGround = false
 
     func moveLeft() {
-//        if let node = entity?.component(ofType: GKSKNodeComponent.self)?.node {
-            direction = -1.0
-            startMoving()
-//        }
+        direction = -1.0
+        startMoving()
     }
 
     func moveRight() {
-//        if let node = entity?.component(ofType: GKSKNodeComponent.self)?.node {
-            direction = 1.0
-            startMoving()
-//        }
+        direction = 1.0
+        startMoving()
     }
 
     func jump() {
         if let node = entity?.component(ofType: GKSKNodeComponent.self)?.node {
-            node.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: maxJump))
+            if (onGround == true) {
+                node.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: maxJump))
+                onGround = false
+            }
+        }
+    }
+
+    func getDown() {
+        if let pdown = self.entity?.component(ofType: GKSKNodeComponent.self)?.node as? PlayerNode {
+            pdown.pressingDown = true
+        }
+    }
+
+    func stopDown() {
+        if let pdown = self.entity?.component(ofType: GKSKNodeComponent.self)?.node as? PlayerNode {
+            pdown.pressingDown = false
         }
     }
 
     private func startMoving() {
-//        let stateMachine = (self.entity as! PlayerEntity).stateMachine
+        //        let stateMachine = (self.entity as! PlayerEntity).stateMachine
         hSpeed = direction * runSpeed
 
     }
@@ -63,8 +74,7 @@ class ActionComponent: GKComponent {
         super.update(deltaTime: seconds)
 
         if let node = entity?.component(ofType: GKSKNodeComponent.self)?.node {
-            node.position = CGPoint(x: node.position.x + hSpeed, y: node.position.y + vSpeed) // Can move while on air
-//            node.position.x = node.position.x + hSpeed
+            node.position.x = node.position.x + hSpeed
             if (hSpeed > 0) {
                 node.xScale = 1.0
             } else if (hSpeed < 0) {
@@ -72,11 +82,4 @@ class ActionComponent: GKComponent {
             }
         }
     }
-
-    
 }
-
-//        if let node = entity?.component(ofType: GKSKNodeComponent.self)?.node {
-//            print("actionComponent File")
-//        }
-//        let stateMachine = (self.entity as! PlayerEntity).stateMachine

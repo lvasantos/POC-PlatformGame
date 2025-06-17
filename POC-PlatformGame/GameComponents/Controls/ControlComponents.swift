@@ -41,12 +41,9 @@ extension ControlComponent: ControlsInputDelegate {
             switch(command!) {
             case "up":
                 print(command!)
-//                movementComponent.moveUp()
             case "left":
-//                print(command)
                 movementComponent.moveLeft()
             case "right":
-//                print(command)
                 movementComponent.moveRight()
             case "B":
                 movementComponent.jump()
